@@ -1,0 +1,31 @@
+.big_container{
+    width:100%;
+    /* height:1000px; */
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:20px;
+    background-color:#F6F5F5;
+}
+.big_container .myform{
+    margin-left:20px;
+    margin-top:10px;
+    padding-top: 20px;
+    width:100%;
+}
+.center h1{
+    font-size:36px;
+    color:#487E95;
+    text-align: center;
+    line-height: 60px;
+    margin-top:40px;
+    width:100%;
+    height:60px;
+    border-bottom:1px solid #ddd;
+}
+.center #btn_select{
+    font-size:20px;
+    text-align: center;
+    margin-top:10px;
+    margin-bottom: 20px;
+
+}

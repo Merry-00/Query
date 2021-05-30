@@ -1,0 +1,89 @@
+.center h1{
+    font-size:40px;
+    line-height:1.1;
+    font-weight:500;
+    width:980px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom:36px;
+    padding-top:34px;
+    color:#1d1d1f;
+    text-align:left;
+    font-family:SF Pro SC,SF Pro Display,SF Pro Icons,AOS Icons,PingFang SC,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-style: normal;
+}
+.center .login{
+    width:980px;
+    height:600px;
+    margin-right:auto;
+    margin-left:auto;
+
+}
+.center .login .username{
+    width:980px;
+    height:80px;
+    margin:3px 50px 3px 0px;
+
+}
+.username .usernameInfo{
+    width:980px;
+    height:80px;
+    margin:3px 50px 3px 0px;
+}
+.username .usernameInfo span{
+    font-size:12px;
+    color:red;
+
+}
+.psd .passwordInfo{
+    width:980px;
+    height:80px;
+    margin:3px 50px 3px 0px;
+}
+.psd .passwordInfo span{
+    font-size:12px;
+    color:red;
+}
+.center .login .psd{
+    width:980px;
+    height:80px;
+    margin:3px 50px 3px 0px;
+
+}
+.center .login input{
+    width:400px;
+    height:50px;
+    border-radius: 12px;
+    /* 圆角边框的设置 */
+    border: 1px solid #d2d2d7;
+    appearance: none;
+    outline: none;
+}
+.center .login .info{
+    margin-top:10px;
+    margin-bottom: 40px;
+}
+.center .login .info p{
+    width:400px;
+    height:50px;
+    font-size:14px;
+}
+.button #loginbutton{
+    background-color: #0071e3;
+    color:#fff;
+    font-size:17px;
+    font-weight: 400;
+    line-height:1.17648;
+}
+.center .login .forget,.create{
+    text-decoration: none;
+    color:#0071e3;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+.center .login .forget:hover{
+    text-decoration: underline;
+}
+.center .login .create:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJAX展示</title>
+
+<!-- Bootstrap -->
+<link href="./boot/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/index.css">
+
+</head>
+<body>
+<div class="container">
+    <ul id="mytab" class="nav nav-tabs">
+        <li ><a href="">Apple商城</a></li>
+        <li class="right"><a  href="">登录</a></li>
+        <li><a href="">注册</a></li>
+        <li><a href="">消息通知</a></li>
+        <li class="left"><a  href="#">购物车</a></li>
+    </ul>
+</div>
+
+<div class="big_container">
+    <div class="center">
+        <h1>学生信息显示</h1>
+    </div>
+    <table id="std_table" class="table table-striped">
+        <tbody id="tbody">
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>班级</td>
+            <td>年级</td>
+            <td>性别</td>
+            <td>操作</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<!-- 学生信息添加功能 -->
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+<script>
+
+
+
+    // 当页面加载完成后，会执行这里
+    // window.onload=function(){
+    //     //利用js发送http请求
+    //     var tablist=[];
+    //     var request=new XMLHttpRequest();
+    //     request.open("post","http://localhost:8080/Query_war_exploded/add");
+    //     request.send(null);
+    //     request.onload()=function(){
+    //         if(request.status==200){
+    //             tablist=response.obj;
+    //         }
+    //     }
+
+    var students=[];
+
+    //通过ajax发送请求
+    window.onload=requestData;
+    function requestData(){
+        $.ajax({
+            url:"http://localhost:8080/Query_war_exploded/select",
+            type:"POST",
+            dataType:"json",
+            success:function(jsonlist){
+                console.log("success")
+                students=jsonlist;
+                showData(jsonlist);
+            },
+            error:function(msg){
+                alert("ajax连接异常"+msg);
+            }
+        });
+    }
+    //展示数据
+''
+    function showData(jsonlist){
+        // var str="";
+        for(var i=0;i<jsonlist.length;i++){
+            var td_id=document.createElement("td");
+            var text_id=document.createTextNode(jsonlist[i].id);
+            td_id.appendChild(text_id);
+
+            var td_name=document.createElement("td");
+            var text_name=document.createTextNode(jsonlist[i].name);
+            td_name.appendChild(text_name);
+
+            var td_age=document.createElement("td");
+            var text_age=document.createTextNode(jsonlist[i].age);
+            td_age.appendChild(text_age);
+
+            var td_class=document.createElement("td");
+            var text_class=document.createTextNode(jsonlist[i].student_class);
+            td_class.appendChild(text_class);
+
+            var td_grade=document.createElement("td");
+            var text_grade=document.createTextNode(jsonlist[i].grade);
+            td_grade.appendChild(text_grade);
+
+            var td_sex=document.createElement("td");
+            var text_sex=document.createTextNode(jsonlist[i].sex);
+            td_sex.appendChild(text_sex);
+
+            //创建a标签的td
+            var td_a=document.createElement("td");
+            //创建a标签
+            var ele_a=document.createElement("a");
+            ele_a.setAttribute("href","javascript:void(0)");
+            ele_a.setAttribute("onclick","delTr(this);");
+            var text_a=document.createTextNode("删除");
+            ele_a.appendChild(text_a);
+            td_a.appendChild(ele_a);
+
+            //4.创建tr,将td添加到tr中
+            var tr=document.createElement("tr");
+            tr.appendChild(td_id);
+            tr.appendChild(td_name);
+            tr.appendChild(td_age);
+            tr.appendChild(td_class);
+            tr.appendChild(td_grade);
+            tr.appendChild(td_sex);
+            tr.appendChild(td_a);
+            //5.将tr添加到tbody中
+            var tbody=document.getElementById("tbody");
+            tbody.appendChild(tr);
+        }
+    }
+    //    分析如何添加数据到表格中
+    /*
+        1.获取标签体对象；
+        2.获取标签体的数据
+        3.创建td,将数据添加到td中
+        4.创建tr,将td添加到tr中
+        5.获取table,将tr添加到table中
+    */
+
+
+    function delTr(obj){
+        var tbody=obj.parentNode.parentNode.parentNode;
+        var tr=obj.parentNode.parentNode;
+        tbody.removeChild(tr);
+    }
+
+</script>
+</body>
+</html>
